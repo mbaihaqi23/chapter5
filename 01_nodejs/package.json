@@ -1,0 +1,19 @@
+{
+  "name": "01_nodejs",
+  "version": "1.0.0",
+  "description": "Belajar nodejs di binar",
+  "main": "index.js",
+  "scripts": {
+    "mulai": "node tesHalo.js"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs",
+    "Binar"
+  ],
+  "author": "baihaqi",
+  "license": "ISC",
+  "dependencies": {
+    "mathjs": "^10.6.1"
+  }
+}
