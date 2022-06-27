@@ -1,39 +1,31 @@
 const express = require("express");
+const {
+    getUsers,
+    createUsers,
+    readUsers,
+    updateUsers,
+    deleteUsers,
+} = require("./users/users.service");
 const app = express();
 const port = 5000;
 
-const usersList = [{
-    name : "rico",
-    password : "123as",
-    id : "11"
-}];
 
-app.get("/", (req, res) => {
-  res.send("hello from simple server :)");
-});
+
+// app.get("/", (req, res) => {
+//   res.send("hello from simple server :)");
+// });
 
 // api untuk mendapat semua users
-app.get("/users", (req, res) => {
-   return res.json(usersList);
- });
+app.get("/users", getUsers);
 
-// api untuk membuat sebuah users
-// app.post("/users", (req, res) => {
-// harus bisa menerima input dari frontend
-//     const newUser = req.body;
-//     const newUserId = pikirkan cara ganeratenya
+app.post("/users", createUsers);
 
-//     usersList.push({...newUser, id: newUserId});
-//     return res.json({...newUser, id: newUserId});
-// });
+app.get("/users/:userId", readUsers);
 
-// mendapatkan 1 user saja
-// app.get("/users/:userId", (req, res) => {
-//     const {userId} = req.params;
+app.put("/users", getUsers);
 
-// filter userList dan return user dengan id yang sama
-//     return res.json(user dengan id yang sama); 
-// });
+app.delete("/users", deleteUsers);
+
 
 app.listen(port, () =>
   console.log("> Server is up and running on port : " + port)
