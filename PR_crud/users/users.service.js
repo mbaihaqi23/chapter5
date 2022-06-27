@@ -7,15 +7,16 @@ const getUsers = (req, res) => {
 };
 
 const createUsers = (req, res) => {
-    const userId = 1;
-    const user = {
-        id : "userId",
-        name : "usernama",
-        password : "password"
-    };
-
-    return res.send("test");
-};
+    const newUser = req.body;
+    userColection.push({
+      id: userId,
+      nama: newUser.nama,
+      password: newUser.password,
+    });
+    userId++;
+    return res.json(userColection);
+  };
+    
 
 const readUsers = (req, res) => {
     return res.send("test");
