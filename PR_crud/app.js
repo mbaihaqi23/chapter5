@@ -9,11 +9,11 @@ const {
 const app = express();
 const port = 5000;
 
+app.use(express.json());
 
-
-// app.get("/", (req, res) => {
-//   res.send("hello from simple server :)");
-// });
+app.get("/", (req, res) => {
+  res.send("hello from simple server :)");
+});
 
 // api untuk mendapat semua users
 app.get("/users", getUsers);
@@ -24,7 +24,7 @@ app.get("/users/:userId", readUsers);
 
 app.put("/users", getUsers);
 
-app.delete("/users", deleteUsers);
+app.delete("/users/:userId", deleteUsers);
 
 
 app.listen(port, () =>

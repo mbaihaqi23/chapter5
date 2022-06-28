@@ -1,5 +1,5 @@
 let userId = 1
-const usersList = []
+let usersList = []
 
 
 const getUsers = (req, res) => {
@@ -8,18 +8,20 @@ const getUsers = (req, res) => {
 
 const createUsers = (req, res) => {
     const newUser = req.body;
-    userColection.push({
+    usersList.push({
       id: userId,
-      nama: newUser.nama,
+      name: newUser.name,
       password: newUser.password,
     });
     userId++;
-    return res.json(userColection);
+    return res.json(usersList);
   };
     
 
 const readUsers = (req, res) => {
-    return res.send("test");
+    const { userId } = req.params;
+    const userData = usersList.find((user) => user.id == userId);
+    return res.json(userData);
 };
 
 const updateUsers = (req, res) => {
@@ -27,7 +29,11 @@ const updateUsers = (req, res) => {
 };
 
 const deleteUsers = (req, res) => {
-    return res.send("test");
+    const { userId } = req.params;
+
+    usersList = usersList.filter((user) => user.id != userId);
+    console.log(usersList);
+    return res.send("deleted");
 };
 
 
