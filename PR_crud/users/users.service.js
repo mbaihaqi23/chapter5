@@ -25,7 +25,15 @@ const readUsers = (req, res) => {
 };
 
 const updateUsers = (req, res) => {
-    return res.send("test");
+const { userId } = req.params;
+
+const filterUser = usersList.find((user) => {
+return user.id == userId;
+  });
+
+filterUser.name = req.body.name;
+filterUser.password = req.body.password;
+return res.json(filterUser);
 };
 
 const deleteUsers = (req, res) => {

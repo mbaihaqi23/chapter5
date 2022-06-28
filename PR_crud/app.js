@@ -22,7 +22,7 @@ app.post("/users", createUsers);
 
 app.get("/users/:userId", readUsers);
 
-app.put("/users", getUsers);
+app.put("/users/:userId", updateUsers);
 
 app.delete("/users/:userId", deleteUsers);
 
