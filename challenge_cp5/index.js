@@ -1,7 +1,13 @@
 const express = require ("express");
+const { getUsers } = require("./users/users.service");
 const app = express();
 const port = 8000;
 
+app.use(express.json());
+
+// // // Parsing Body Json 
+// const bodyParser = require('body-parser');
+// app.use(bodyParser.json());
 
 app.set("view engine", "html");
 app.engine('html', require ("ejs").renderFile);
@@ -38,7 +44,11 @@ app.get("/chapter4", (req, res) => {
 //     return res.send("your product id is => " + req.params.productId);
 // });
 
-app.listen(port, () => console.log("your server started (ctlr + right click) http://localhost:" + port));
+//Login
+app.get("/login", getUsers);
+
+app.listen(port, () => console.log("your server started (ctlr + click) http://localhost:" + port));
+
 
 //http:localhost:8000/chapter3 => landingpage chapter 3
 //http:localhost:8000/chapter4 => game suit jawa
